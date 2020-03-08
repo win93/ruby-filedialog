@@ -29,5 +29,5 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_dependency "os", "~> 1.0"
-  spec.add_dependency "rake", "~> 12.0"
+  spec.add_dependency "rake", "~> 13.0"
 end
