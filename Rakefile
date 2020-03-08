@@ -36,3 +36,6 @@ task :cleandeps do
     system("make -w clean")
   end
 end
+
+Rake::Task["compile"].enhance([:compiledeps])
+Rake::Task["clean"].enhance([:cleandeps])
