@@ -25,6 +25,7 @@ deps_folder = File.expand_path("deps", __dir__)
 
 nfd_build = File.join("nativefiledialog", NFD_BUILD_LOCATIONS[PLATFORM])
 
+# Manually run by extconf.rb because bundler doesn't run rake at all
 task :compiledeps do
   Dir.chdir(File.join(deps_folder, nfd_build)) do
     system("make -w")
@@ -37,5 +38,4 @@ task :cleandeps do
   end
 end
 
-Rake::Task["compile"].enhance([:compiledeps])
 Rake::Task["clean"].enhance([:cleandeps])

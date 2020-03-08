@@ -38,4 +38,8 @@ elsif OS.mac?
   add_libs("-framework AppKit")
 end
 
+Dir.chdir(project_root) do
+  system("rake compiledeps")
+end
+
 create_makefile "filedialog/filedialog"
