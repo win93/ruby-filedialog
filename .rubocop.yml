@@ -1,0 +1,19 @@
+AllCops:
+  TargetRubyVersion: 2.3
+
+Layout/ArgumentAlignment:
+  EnforcedStyle: with_fixed_indentation
+Layout/MultilineMethodCallBraceLayout:
+  EnforcedStyle: same_line
+Layout/SpaceInsideBlockBraces:
+  SpaceBeforeBlockParameters: false
+Layout/SpaceInsideHashLiteralBraces:
+  EnforcedStyle: no_space
+Style/NumericPredicate:
+  EnforcedStyle: comparison
+Style/RedundantSelf:
+  Enabled: false
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+Style/SymbolArray:
+  EnforcedStyle: brackets

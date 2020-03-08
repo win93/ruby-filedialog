@@ -1,0 +1,13 @@
+/.vscode/
+/.bundle/
+/.yardoc
+/_yardoc/
+/coverage/
+/doc/
+/pkg/
+/spec/reports/
+/tmp/
+/vendor/
+
+#Build artifacts
+*.bundle
