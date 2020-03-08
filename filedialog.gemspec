@@ -27,4 +27,6 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) {|f| File.basename(f) }
   spec.extensions    = ["ext/filedialog/extconf.rb"]
   spec.require_paths = ["lib"]
+
+  spec.add_dependency "os", "~> 1.0"
 end

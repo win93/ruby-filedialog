@@ -2,7 +2,6 @@
 
 require "mkmf"
 require "os"
-require "pkg-config"
 
 def add_cflags(str)
   $CFLAGS += " " + str
