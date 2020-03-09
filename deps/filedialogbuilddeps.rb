@@ -15,21 +15,35 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-require "bundler/gem_tasks"
-require "rake/extensiontask"
-require_relative "deps/filedialogbuilddeps"
+require "os"
 
-Rake::ExtensionTask.new "filedialog" do |ext|
-  ext.lib_dir = "lib/filedialog"
+module FileDialog
+  module BuildDeps
+    NFD_BUILD_LOCATIONS = {
+      linux: "build/gmake_linux",
+      macos: "build/gmake_macosx",
+      windows: "build/gmake_windows"
+    }.freeze
+
+    PLATFORM =
+      if OS.linux? then :linux
+      elsif OS.mac? then :macos
+      elsif OS.windows? then :windows
+      else :other
+      end
+
+    NFD_BUILDDIR = File.join("nativefiledialog", NFD_BUILD_LOCATIONS[PLATFORM])
+
+    def self.compile_deps
+      Dir.chdir(File.join(__dir__, NFD_BUILDDIR)) do
+        system("make -w")
+      end
+    end
+
+    def self.clean_deps
+      Dir.chdir(File.join(__dir__, NFD_BUILDDIR)) do
+        system("make -w clean")
+      end
+    end
+  end
 end
-
-task :compiledeps do
-  FileDialog::BuildDeps.compile_deps
-end
-
-task :cleandeps do
-  FileDialog::BuildDeps.clean_deps
-end
-
-Rake::Task["compile"].enhance([:compiledeps])
-Rake::Task["clean"].enhance([:cleandeps])

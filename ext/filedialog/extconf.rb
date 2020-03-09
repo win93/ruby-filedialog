@@ -17,6 +17,7 @@
 
 require "mkmf"
 require "os"
+require_relative "../../deps/filedialogbuilddeps"
 
 def add_cflags(str)
   $CFLAGS += " " + str
@@ -53,8 +54,5 @@ elsif OS.mac?
   add_libs("-framework AppKit")
 end
 
-Dir.chdir(project_root) do
-  system("rake compiledeps")
-end
-
+FileDialog::BuildDeps::compile_deps
 create_makefile "filedialog/filedialog"

@@ -3,7 +3,6 @@ PATH
   specs:
     filedialog (0.2.1)
       os (~> 1.0)
-      rake (~> 13.0)
 
 GEM
   remote: https://rubygems.org/
@@ -24,6 +23,7 @@ PLATFORMS
 DEPENDENCIES
   filedialog!
   pry (~> 0.12.2)
+  rake (~> 13.0)
   rake-compiler (~> 1.1)
 
 BUNDLED WITH
