@@ -35,7 +35,7 @@ Gem::Specification.new do |spec|
   # spec.metadata["changelog_uri"] = "TODO: Put your gem CHANGELOG.md URL here."
 
   spec.files = Dir.chdir(__dir__) do
-    `git ls-files -z`.split("\x0").reject do |f|
+    `git ls-files --recurse-submodules -z`.split("\x0").reject do |f|
       f.match(%r{^(test|spec|features)/})
     end
   end
