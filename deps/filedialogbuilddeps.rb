@@ -20,9 +20,9 @@ require "os"
 module FileDialog
   module BuildDeps
     NFD_BUILD_LOCATIONS = {
-      linux: "build/gmake_linux",
-      macos: "build/gmake_macosx",
-      windows: "build/gmake_windows"
+      linux: "nativefiledialog/build/gmake_linux",
+      macos: "nativefiledialog/build/gmake_macosx",
+      windows: "nativefiledialog/build/gmake_windows"
     }.freeze
 
     PLATFORM =
@@ -32,16 +32,16 @@ module FileDialog
       else :other
       end
 
-    NFD_BUILDDIR = File.join("nativefiledialog", NFD_BUILD_LOCATIONS[PLATFORM])
+    NFD_BUILDDIR = File.join(__dir__, NFD_BUILD_LOCATIONS[PLATFORM])
 
     def self.compile_deps
-      Dir.chdir(File.join(__dir__, NFD_BUILDDIR)) do
+      Dir.chdir(NFD_BUILDDIR) do
         system("make -w")
       end
     end
 
     def self.clean_deps
-      Dir.chdir(File.join(__dir__, NFD_BUILDDIR)) do
+      Dir.chdir(NFD_BUILDDIR) do
         system("make -w clean")
       end
     end
